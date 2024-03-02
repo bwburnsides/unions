@@ -2,13 +2,14 @@ import typing as t
 import dataclasses as dc
 import enum
 
-from util import panic, AlwaysTrue, AlwaysFalse, Func
+from union.util import panic, AlwaysTrue, AlwaysFalse, Func
 
 type NothingVariant = t.Literal[NothingKind.Nothing]
 
 type Option[T] = Just[T] | NothingVariant
 
 type ZeroParam[R] = t.Callable[[], R]
+
 
 class NothingKind(enum.Enum):
     Nothing = 0
@@ -39,6 +40,7 @@ class NothingKind(enum.Enum):
 
     def or_else[T](self, op: ZeroParam[Option[T]]) -> Option[T]:
         return op()
+
 
 Nothing: t.Final[NothingVariant] = NothingKind.Nothing
 

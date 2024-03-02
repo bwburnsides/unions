@@ -1,7 +1,7 @@
 import typing as t
 import dataclasses as dc
 
-from util import panic, AlwaysTrue, AlwaysFalse, Func
+from union.util import panic, AlwaysTrue, AlwaysFalse, Func
 
 type Result[T, E] = Ok[T] | Err[E]
 
